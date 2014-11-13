@@ -1,0 +1,55 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+
+
+{% block fos_user_content %}
+
+<style type="text/css">
+  div[type="login"] {
+    width: 300px;
+    text-align: center;
+       }
+
+  input[type="text"] {
+    width: 200px;
+    display: block;
+    margin-bottom: 10px;
+    background-color: yellow;
+  }
+  input[type="password"] {
+    width: 200px;
+    display: block;
+    margin-bottom: 10px;
+    background-color: yellow;
+  }
+  input[type=submit] {
+    font-weight: bold;
+    color: #527881;
+    text-shadow: 0 1px #e3f1f1;
+    background: #cde5ef;
+    border: 1px solid;
+    border-color: #b4ccce;
+    border-radius: 16px;
+    outline: 0;
+    box-sizing: content-box;
+  }
+</style>
+
+  {% if error %}
+      <div>{{ error|trans }}</div>
+  {% endif %}
+
+  <div type="login">
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <label for="username"></label>
+        <input type="text" id="username" placeholder="Username" value="{{ last_username }}" required="required" /></br>
+
+        <label for="password"></label>
+        <input type="password" id="password"  placeholder="password" required="required" /></br>
+
+        <input type="submit" id="_submit" name="_submit" value="{{ 'Connect'}}" />
+    </form>
+  </div> 
+{% endblock fos_user_content %}

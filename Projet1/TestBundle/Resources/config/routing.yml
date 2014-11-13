@@ -1,0 +1,17 @@
+projet1_homepage:
+    pattern:  /index
+    defaults: { _controller: Projet1TestBundle:Test:index }
+
+login:
+    pattern:  /login
+    defaults: { _controller: Projet1TestBundle:Test:Login }
+
+testDelete:
+    pattern:  /toto
+    defaults: { _controller: Projet1TestBundle:Test:Delete }
+
+
+
+testUpdate:
+    pattern:  /toto
+    defaults: { _controller: Projet1TestBundle:Test:Update }
