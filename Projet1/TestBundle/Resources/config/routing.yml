@@ -1,4 +1,4 @@
-projet1_homepage:
+homepage:
     pattern:  /index
     defaults: { _controller: Projet1TestBundle:Test:index }
 
@@ -6,12 +6,24 @@ login:
     pattern:  /login
     defaults: { _controller: Projet1TestBundle:Test:Login }
 
-testDelete:
-    pattern:  /toto
+showProfil:
+    pattern:  /show
+    defaults: { _controller: Projet1TestBundle:Test:showProfil }
+
+ChangePassword:
+    pattern:  /ChangePassword
+    defaults: { _controller: Projet1TestBundle:Test:ChangePassword }
+
+EditProfil:
+    pattern:  /edit
+    defaults: { _controller: Projet1TestBundle:Test:EditProfil }
+
+admin:
+    pattern:  /admin
+    defaults: { _controller: Projet1TestBundle:Test:Admin }
+
+Delete:
+    pattern:  /delete/{id}
     defaults: { _controller: Projet1TestBundle:Test:Delete }
-
-
-
-testUpdate:
-    pattern:  /toto
-    defaults: { _controller: Projet1TestBundle:Test:Update }
+    requirements:
+            id:  \d+

@@ -1,0 +1,48 @@
+
+<body>
+    <style type="text/css">
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+        }
+        button[type="danger"]{
+            background-color: #ff0000;
+        }
+        button[type="primary"]{
+            background-color: #0088CC;
+        }
+        button[type="success"]{
+            background-color: #009933;
+            float: right;
+        }
+        div[type="test"]{
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+
+    <div class="panel panel-default">
+        <div type="test">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><button type="success" class="btn btn-default btn-xs">Ajouter utilisateur</button></div></br>
+
+            <!-- Table -->
+            <table class="table">
+                <tr>
+                    <td>Nom d'utilisateur</td>
+                    <td>Action</td>
+                </tr>
+                {% for user in info %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td><button type="primary" class="btn btn-primary btn-xs">Edit</button>
+                    <a type="danger" class="btn btn-danger btn-xs" href={{ path('Delete', { 'id': user.id } )}}>Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>

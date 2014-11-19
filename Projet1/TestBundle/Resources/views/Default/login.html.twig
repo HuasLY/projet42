@@ -1,55 +1,56 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
-
-
+{% trans_default_domain 'FOSUserBundle' %}
 {% block fos_user_content %}
 
-<style type="text/css">
-  div[type="login"] {
-    width: 300px;
-    text-align: center;
-       }
+ <style type="text/css">
 
-  input[type="text"] {
-    width: 200px;
-    display: block;
-    margin-bottom: 10px;
-    background-color: yellow;
-  }
-  input[type="password"] {
-    width: 200px;
-    display: block;
-    margin-bottom: 10px;
-    background-color: yellow;
-  }
-  input[type=submit] {
-    font-weight: bold;
-    color: #527881;
-    text-shadow: 0 1px #e3f1f1;
-    background: #cde5ef;
-    border: 1px solid;
-    border-color: #b4ccce;
-    border-radius: 16px;
-    outline: 0;
-    box-sizing: content-box;
-  }
-</style>
 
-  {% if error %}
-      <div>{{ error|trans }}</div>
-  {% endif %}
+    div[type="test"]{
+        width: 300px;
+        padding: 25px;
+        margin: 25px;
+        position:relative;
+        top:201px;
+        left:600px;
+        border: 20px solid rosybrown;
+    }
+    div[type="checkbox"]{
+        float: right;
+    }
+    input[type="submit"] {
+        float: right;
+        width: 90px;
+    }
+    body{
+        background-image: url("http://image.clipdealer.com/906341/previews/3--906341-Binary%20code%20-%20Background%20animation.jpg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+     }
+  </style>
+<body>
+{% if error %}
+    <div>{{ error|trans }}</div>
+{% endif %}
+    <div type="test">
+    <form role="form" action="{{ path("fos_user_security_check") }}" method="POST">
+        <div class="form-group">
+          <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-  <div type="login">
-    <form action="{{ path("fos_user_security_check") }}" method="post">
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+          </br><label for="username">{{ 'security.login.username'|trans }}</label>
+          <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" /> </br>
 
-        <label for="username"></label>
-        <input type="text" id="username" placeholder="Username" value="{{ last_username }}" required="required" /></br>
+          <label for="password">{{ 'security.login.password'|trans }}</label>
+          <input type="password" id="password" name="_password" required="required" /></br>
+          <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+          <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label></br>
+            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 
-        <label for="password"></label>
-        <input type="password" id="password"  placeholder="password" required="required" /></br>
-
-        <input type="submit" id="_submit" name="_submit" value="{{ 'Connect'}}" />
+        </div>
     </form>
-  </div>
+    </div>
+</body>
 {% endblock fos_user_content %}
+
+
+
